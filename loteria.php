@@ -1,23 +1,36 @@
 <?php
-	$vector = array(); $vector[0]=rand(0, 50);
+	// Declaracion del vector.
+		$vector = array();
 
-    for($i = 1;$i < 6;++$i) { 
+	// Extraccion de los 5 valores normales.
+		for($i = 1;$i < 7;++$i) { 
 		
-        $valor = rand(0, 50);
+			$valor = rand(0, 50);
+			
+			// Evitar valores repetidos.
+			while (in_array($valor,$vector)) {
+				$valor = rand(0, 50);
+			}
+		
+			// Registro del valor obtenido en el vector.
+				$vector[$i] = $valor;
+		
+		}
 	
-        while (in_array($valor,$vector)) {
-            $valor = rand(0, 50); echo $valor;
-        }
+	// Ordenacion del vector
+		sort($vector);
 		
-		$vector[$i] = $valor;
-		
-        sort($vector);
-
-    }
-	
-   for($b = 1; $b < 6; ++$b){
-	   echo "El valor " . $b . " de la loteria es " . $vector[$b] . "<br>";
-   }
+	// Mostrar los 5 valores normales.
+		for($b = 1; $b < 6; ++$b){
+			echo "El valor " . $b . " de la loteria es " . $vector[$b] . "<br>";
+		}
    
-   echo "<br> El numero especial es  " . $vector[0]; 
+	// Valor especial.
+		$especial = rand(0, 50);
+		
+		while (in_array($especial,$vector)) {
+			$especial = rand(0, 50);
+		}
+		
+		echo "<br> El numero especial es  " . $especial; 
 ?>
