@@ -11,7 +11,7 @@
 				<?
 
 					
-					include "funcion_fecha";
+					include "funcion_fecha.php";
 					if (isset($_GET['saluda'])) {
 						// Se pasa el formulario
 						$mensaje_nombre=null;$mensaje_fecha=null;
@@ -27,7 +27,7 @@
 						}
 						
 						if($sw) 
-						include "saludo.php";
+						include "funcion_saludo.php";
 					}
 					
 					if(isset($_GET['saluda']) or (!$sw)){

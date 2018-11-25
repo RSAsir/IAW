@@ -1,4 +1,9 @@
 <?php
+	/* Crear un simulador de bonoloto. Han de obtenerse 5 valores normales que no se repitan,
+	en el rango de numeros 0-50 y por ultimo hay que obtener un valor extra a parte de estos 
+	pero que siga cumpliendo los requisitos de los valores normales. Los 5 valores normales 
+	deben ir ordenados de menor a mayor. */
+
 	// Declaracion del vector.
 		$vector = array();
 
