@@ -21,8 +21,10 @@
     # 3. $_POST
         # Toma datos despues de que se han subido mediante un formulario que usa "method = post".
         # Tambien se usa para pasar variables.
+        # Usado para datos mas sensibles ya que la informacion enviada es invisible a otros.
     
     # 3. $_GET
         # Toma datos despues de que se han subido mediante un formulario que usa "method = get".
         # Tambien puede tomar informacion enviada en la url.
+        # Muestra la info en la url donde es visible para todos (util para marcar paginas).
 ?>
