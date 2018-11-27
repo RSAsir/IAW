@@ -1,8 +1,8 @@
 Si php esta recien instalado es recomendable cambiar las siguientes opciones en el fichero /etc/php/version_php/apache2/php.ini:
 
-	- short_open_tag: Por defecto aparece a Off, ya que puede generar problemas de 				  compatibilidad. Permite el uso de la sintaxis "<?" para iniciar codigo 				  php.
+	- short_open_tag: Por defecto aparece a Off, ya que puede generar problemas de compatibilidad. Permite el uso de la sintaxis "<?" para iniciar codigo php.
 
-	- display_errors: Por defecto esta en Off. Muestra los errores en el codigo php en lugar 				  de una pantalla en blanco, se recomienda su uso solo cuando se esta 				  desarrollando el codigo.
+	- display_errors: Por defecto esta en Off. Muestra los errores en el codigo php en lugar de una pantalla en blanco, se recomienda su uso solo cuando se esta desarrollando el codigo.
 
-	- error_reporting: Se recomienda dejarlo en "E_ALL & ~E_NOTICE & ~E_STRICT & 				   ~E_DEPRECATED", para evidar que las noticias se muestren mientras 				   desarrollamos el codigo (ej: variables sin valor).
+	- error_reporting: Se recomienda dejarlo en "E_ALL & ~E_NOTICE & ~E_STRICT & ~E_DEPRECATED", para evidar que las noticias se muestren mientras desarrollamos el codigo (ej: variables sin valor).
 
