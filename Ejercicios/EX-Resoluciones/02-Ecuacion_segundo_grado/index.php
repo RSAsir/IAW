@@ -15,9 +15,10 @@
     <div class="cuerpo">
         <div class="formulario">
             <form action="index.php" method="GET">
-                <input type="text" name="x" value="<?php $_GET['x'] ?>">x<sup>2</sup> +
-                <input type="text" name="y" value="<?php $_GET['y'] ?>">x +
-                <input type="text" name="z" value="<?php $_GET['z'] ?>"> = 0
+                <input type="text" name="x" style="width: 30px" value="<?php $_GET['x'] ?>">x<sup>2</sup> +
+                <input type="text" name="y" style="width: 30px" value="<?php $_GET['y'] ?>">x +
+                <input type="text" name="z" style="width: 30px" value="<?php $_GET['z'] ?>"> = 0
+                <br>
                 <br>
                 <input type="submit" name="enviar" value="Calcular">
                 <input type="reset" name="borrar "value="Borrar">
