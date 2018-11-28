@@ -15,6 +15,7 @@
     <div class="cuerpo">
         <div class="formulario">
             <form action="index.php" method="GET">
+                <!-- width nos va a determinar el tamaño del campo -->
                 <input type="text" name="x" style="width: 30px" value="<?php $_GET['x'] ?>">x<sup>2</sup> +
                 <input type="text" name="y" style="width: 30px" value="<?php $_GET['y'] ?>">x +
                 <input type="text" name="z" style="width: 30px" value="<?php $_GET['z'] ?>"> = 0
@@ -27,13 +28,16 @@
 
         <div class= solucion>
         <?php
-            if (isset($_GET["enviar"])) { # isset comprueba y devuelve true si hay un valor (se vincula al boton para que no aparezca el error directamente).
+
+            # OUTPUT DEL FORMULARIO
+            if (isset($_GET["enviar"])) { 
                 $x = $_GET['x'];
                 $y = $_GET['y'];
                 $z = $_GET['z'];
- 
+                
+               # CONTROL DE ENTRADA
                if (!is_numeric($x)){
-                    # Se puede optimizar con un "for".
+                    # Se puede optimizar guardando las variables en un array y recorriendolo.
                     if (empty($x)) {
                         echo "El campo no puede estar vacio.";
                     } elseif (is_float($x)) {
@@ -78,7 +82,7 @@
                     } 
                 }
 
-                    
+                # RESOLUCION DE LA ECUACION  
                 if ($sw != 1) {
                     
                     $d = $y**2 -4 * $x * $z;
