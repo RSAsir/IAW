@@ -1,0 +1,1 @@
+El algoritmo propuesto daba problemas, se ha utilizado uno diferente. Tambien habria que implementar el calculo del viernes santo (restar al output de pascua dos dias y controlar el mes).
