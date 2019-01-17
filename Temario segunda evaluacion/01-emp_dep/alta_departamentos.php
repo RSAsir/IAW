@@ -18,7 +18,7 @@
 			Nombre de departamento: <input type="text" name="nombre" id="nombre" required>
 			<br>
 			<br>
-			Localidad: <input type:="text" name="Localidad" id="Localidad">
+			Localidad: <input type:="text" name="localidad" id="localidad">
 			<br>
 			<br>
 			<input type="submit" name="grabar" value="Enviar">
@@ -32,9 +32,9 @@
 				$conexion=conectar();
 				$dep_no="".$_POST['dep_no']."";
 				$nombre="'".strtoupper($_POST['nombre'])."'"; //echo $nombre;
-
-				if ($loc!=null) {
-					$loc="'".strtoupper($_POST['Localidad'])."'"; //echo $loc; SI SE PONE ANTES, DA PROBLEMAS POR QUE LAS COMILLAS YA LE DAN UN VALOR VACIO
+				$loc="'".strtoupper($_POST['localidad'])."'"; //echo $loc; SI SE PONE ANTES, DA PROBLEMAS POR QUE LAS COMILLAS YA LE DAN UN VALOR VACIO
+				
+				if ($loc!="''") {
 					$sql="insert into dep values ($dep_no,$nombre,$loc)"; // OPCION 1 PARA SIMPLIFICAR LAS COMILLAS
 				} else {
 					$sql="insert into dep(dep_no,nombre)
@@ -42,7 +42,7 @@
 				}
 
 				
-				// $sql="insert into dep values (".$_POST['dep_no'].",'".$_POST['nombre']."','".$_POST['Localidad']."')"; OPCION 2
+				// $sql="insert into dep values (".$_POST['dep_no'].",'".$_POST['nombre']."','".$_POST['localidad']."')"; OPCION 2
 				//echo "Damos de alta el departamento";
 				//echo $sql;
 				
