@@ -9,4 +9,13 @@
 
 		mysqli_set_charset($conexion,'utf8'); //Para la conexion actual usa este juego de caracteres
 		return $conexion;} 
+
+	//validacion fecha
+		function validar_fecha($fecha) {
+			$fecha=explode('/',$fecha);
+
+			if (count($fecha)==3);
+				return(checkdate($fecha[1], $fecha[0], $fecha[2])); 
+			return false;
+		}
 ?>
