@@ -23,8 +23,19 @@
         $conexion=conectar();
 
         if(isset($_POST['grabar'])) {
-     
-	
+                $palabra="'".strtoupper($_POST['palabra'])."'";
+                $sql="select significado from tabla where palabra=$palabra"; //echo $sql;
+                $resultado=mysqli_query($conexion,$sql);
+
+                if(mysqli_num_rows($resultado)==0) echo "La palabra no esta en la BD.";
+                    else {
+                        $significados=mysqli_query($conexion, $sql);
+
+                        echo "Los significados de la palabra $palabra son: <br> <br>";
+                        while ($fila=mysqli_fetch_assoc($significados)) { // cada $departamento se convierte en un $fila[i]
+                        echo $fila['significado']. "<br> <br>"; // se muestra cada $fila[i], se asigna el numero por el formato de la bd.
+                    }
+                }
         } else {
     ?>
 
