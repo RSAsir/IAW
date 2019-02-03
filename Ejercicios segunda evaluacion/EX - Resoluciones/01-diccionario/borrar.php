@@ -19,7 +19,23 @@
     </header>
 
     <?php
-        if(isset($_POST['grabar'])){
+        if(isset($_POST['borrado'])) {
+            $_POST['grabar']=true; 
+            include "funciones.php";
+            $conexion=conectar();
+            $deleteId=implode(",", $_POST['checkbox']); 
+            $sql="DELETE FROM tabla WHERE id IN ($deleteId)"; //echo $sql;
+
+            mysqli_query($conexion,$sql);
+
+            if(mysqli_errno($conexion)==0) {
+                echo "Definiciones borradas con exito.";
+            } else {
+                echo "Se ha producido un error al grabar en la BD.";
+            }
+        }
+
+        if(isset($_POST['grabar']) && !isset($_POST['borrado'])){
             include "funciones.php";
             $conexion=conectar();
 
@@ -30,20 +46,53 @@
             if(mysqli_num_rows($resultado)==0){ 
                 echo "La palabra no esta en la BD.";
             } else {
-                $significados=mysqli_query($conexion, $sql);
+                if(!isset($_POST['borrado'])) {
+                    $significados=mysqli_query($conexion, $sql);
 
-                echo "Los significados de la palabra $palabra son: <br> <br>";
-                echo "<table border=1 ><tr><td><b>Definicion</b></td> <td><b>Borrar</b></td></tr>";
+                    echo "Los significados de la palabra $palabra son: <br> <br>";
+                    ?>
 
-                while ($fila=mysqli_fetch_assoc($significados)) {
-                    echo "<tr><td>".$fila['significado']."</td><td> <input type=\"checkbox\" name=\"PLACEHOLDER\"></td></tr>";
+                    <form action="./borrar.php" method="post">
+                        <table border=1 >
+                            <tr>
+                                <td>
+                                    <b>Definicion</b>
+                                </td> 
+                                
+                                <td>
+                                    <b>Borrar</b>
+                                </td>
+                            </tr> 
+                            
+
+                        <?php while ($fila=mysqli_fetch_assoc($significados)) { ?>
+
+                            <tr>
+                                <td>
+                                    <?php echo $fila['significado']; ?>
+                                </td>
+
+                                <td> 
+                                        <input type="checkbox" name="checkbox[]" id="checkbox[]" value="<?php echo $fila['id'];?>">
+                                    
+                                </td>
+                            </tr>
+                        <?php } ?> 
+                                
+                        </table>
+                            <br><input type="submit" name="borrado" value="Borrar"> 
+                    </form>
+                        <?php
+                } else {
+                    $deleteId=implode(",", $_POST['checkbox']); 
+                    $sql="DELETE FROM tabla WHERE id IN ($deleteId)";
+                    mysqli_query($conexion,$sql);
+                    echo "Definiciones borradas con exito.";
                 }
-                
-                echo "</table>";
-                ?> <br><input type="submit" name="borrado" value="Borrar"> <?php
-            }
+            } 
         }
-        echo $_POST['borrar'];
+        
+        
         if(!isset($_POST['grabar'])) {
     ?>
 
