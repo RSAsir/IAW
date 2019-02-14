@@ -7,15 +7,16 @@
 
 	<body>
 		<?php
+			session_start(); // se realiza despues del login
 			if(!isset($_POST['grabar'])){
 		?>
 
 		<form action="alta_departamentos.php" method="post"> <!-- COMPROBAR SI FUNCIONA MAYUS/MINUS -->
 			<h1>DATOS DEPARTAMENTO</h1>
-			Departamento: <input type="number" name="dep_no" id="dep_no" required>
+			Departamento: <input type="number" name="dept_no" id="dept_no" required>
 			<br>
 			<br>
-			Nombre de departamento: <input type="text" name="nombre" id="nombre" required>
+			Nombre de departamento: <input type="text" name="dnombre" id="dnombre" required>
 			<br>
 			<br>
 			Localidad: <input type:="text" name="localidad" id="localidad">
@@ -30,19 +31,19 @@
 			else {
 				include "funciones.php";
 				$conexion=conectar();
-				$dep_no="".$_POST['dep_no']."";
-				$nombre="'".strtoupper($_POST['nombre'])."'"; //echo $nombre;
+				$dept_no="".$_POST['dept_no']."";
+				$dnombre="'".strtoupper($_POST['dnombre'])."'"; //echo $dnombre;
 				$loc="'".strtoupper($_POST['localidad'])."'"; //echo $loc; SI SE PONE ANTES, DA PROBLEMAS POR QUE LAS COMILLAS YA LE DAN UN VALOR VACIO
 				
 				if ($loc!="''") {
-					$sql="insert into dep values ($dep_no,$nombre,$loc)"; // OPCION 1 PARA SIMPLIFICAR LAS COMILLAS
+					$sql="insert into dep values ($dept_no,$dnombre,$loc)"; // OPCION 1 PARA SIMPLIFICAR LAS COMILLAS
 				} else {
-					$sql="insert into dep(dep_no,nombre)
-					values($dep_no,$nombre)";
+					$sql="insert into dep(dept_no,dnombre)
+					values($dept_no,$dnombre)";
 				}
 
 				
-				// $sql="insert into dep values (".$_POST['dep_no'].",'".$_POST['nombre']."','".$_POST['localidad']."')"; OPCION 2
+				// $sql="insert into dep values (".$_POST['dept_no'].",'".$_POST['dnombre']."','".$_POST['localidad']."')"; OPCION 2
 				//echo "Damos de alta el departamento";
 				//echo $sql;
 				
@@ -51,7 +52,7 @@
 				if($error==0) {
 					echo "Departamento dado de alta correctamente";
 				} else if ($error==1062) {
-					 echo "EL CODIGO ". $_POST['dep_no'] . " YA EXISTE.";
+					 echo "EL CODIGO ". $_POST['dept_no'] . " YA EXISTE.";
 				} else {
 					echo "SE HA PRODUCIDO UN ERROR AL GRABAR EN LA BD.";
 				}

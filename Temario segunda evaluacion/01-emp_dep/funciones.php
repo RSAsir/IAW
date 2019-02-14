@@ -10,12 +10,43 @@
 		mysqli_set_charset($conexion,'utf8'); //Para la conexion actual usa este juego de caracteres
 		return $conexion;} 
 
-	//validacion fecha
+	// validacion fecha (atta_empleado.php)
 		function validar_fecha($fecha) {
 			$fecha=explode('/',$fecha);
 
 			if (count($fecha)==3);
 				return(checkdate($fecha[1], $fecha[0], $fecha[2])); 
 			return false;
+		}
+
+	// comprobar usuario (index.php)
+		function comprobar_usuario($conexion) {
+			if($_GET['salir']) {
+				session_destroy();
+				return false;
+			}
+
+			if($_SESSION['id']) return true;
+
+			if(isset($_POST['entrar'])) {
+
+				$sql="SELECT * from usuario where login='".$_POST['login']."'and password='".md5($_POST['pass'])."'"; // Se pasa la pass encriptada
+				$usuario=mysqli_query($conexion,$sql);
+
+				if(mysqli_errno($conexion)!=0) {
+					echo "Imposible conexion BD.";
+					return false;
+				} else {
+					if(mysqli_num_rows($usuario)==1) {
+						$fila=mysqli_fetch_assoc($usuario);
+						$_SESSION['id']=$fila['id']; echo "la sesion iniciada " . $_SESSION['id'];
+						return true;
+					} else {
+						echo "Usuario o contraseña incorrectos";
+						return false;
+					}
+				}
+			}
+			
 		}
 ?>
