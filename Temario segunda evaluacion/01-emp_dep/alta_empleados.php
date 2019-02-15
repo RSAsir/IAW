@@ -7,6 +7,7 @@
 
 	<body>
 		<?php
+			session_start(); // se realiza despues del login
 			include "funciones.php";
 			$conexion=conectar();
 			
@@ -72,6 +73,8 @@
 				} elseif(!is_numeric($_POST['comision']) or $_POST['comision'] < 0) {
 					$error=true;
 					$error_comision="** El valor debe ser numerico y positivo";
+				} else {
+					$comision=$_POST['comision'];
 				}
 
 				// CONTROL FINAL
@@ -83,7 +86,7 @@
 			} 
 			
 			if(!isset($_POST['grabar']) or $error) { // si el formulario no tiene valores o hay errores, se va al formulario
-				$sql="select dep_no, nombre from dep"; // Se extraen los departamentos de la BD
+				$sql="select dept_no, dnombre from dep"; // Se extraen los departamentos de la BD
 				$departamentos=mysqli_query($conexion, $sql); // or die("Imposible acceso a la BD.";
 				//echo mysqli_errno($conexion);
 			// se cierra abajo
@@ -114,7 +117,7 @@
 			Departamento: <select name="departamento" id="departamento">
 				<?php 
 					while ($fila=mysqli_fetch_assoc($departamentos)) { // cada $departamento se convierte en un $fila[i]
-						echo "<option value=".$fila['dep_no'].">".$fila['nombre']."</option>"; // se muestra cada $fila[i], se asigna el numero por el formato de la bd.
+						echo "<option value=".$fila['dept_no'].">".$fila['dnombre']."</option>"; // se muestra cada $fila[i], se asigna el numero por el formato de la bd.
 					}
 				?>			
 			</select>

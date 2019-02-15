@@ -26,7 +26,7 @@
         }
 
         $sql="  select 
-                    emp_no,nombre,date_format(fecha_alta,'%d/%m/%Y') fecha_alta,oficio,salario,comision,dnombre
+                    emp_no,nombre,date_format(fecha_alta,'%d/%m/%Y') fecha_alta,oficio,salario,comision,dnombre,fotografia
                 from
                     emp e inner join dep d on (e.dep_no=d.dept_no)";
 
@@ -45,6 +45,8 @@
                     <th>Salario</th>
                     <th>Comision</th>
                     <th>Nombre departamento</th>
+                    <th>Fotografia</th>
+                    <th>Subir foto</th>
 
             <?php
                 while($fila=mysqli_fetch_assoc($empleados))
@@ -54,7 +56,10 @@
                 <td>".$fila['oficio']."</td>
                 <td>".$fila['salario']."</td>
                 <td>".$fila['comision']."</td>
-                <td>".$fila['dnombre']."</td></tr>";
+                <td>".$fila['dnombre']."</td>
+                <td><img src=\"".$fila['fotografia']."\"width=\"100\" height=\"100\"></td>
+                <td><a href=\"subir_foto.php?id=".$fila['emp_no']."\">Subir foto</a></td></tr>";
+                
         }
     ?>
                 </table></center>
