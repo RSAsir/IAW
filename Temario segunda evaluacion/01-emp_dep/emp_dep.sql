@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 31, 2019 at 08:38 PM
+-- Generation Time: Feb 15, 2019 at 05:55 PM
 -- Server version: 5.7.25-0ubuntu0.18.04.2
--- PHP Version: 7.2.10-0ubuntu0.18.04.1
+-- PHP Version: 7.2.15-0ubuntu0.18.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -58,15 +58,38 @@ CREATE TABLE `emp` (
   `oficio` enum('Administrativo','Analista') COLLATE utf8_spanish_ci NOT NULL,
   `salario` decimal(6,2) NOT NULL,
   `comision` decimal(6,2) DEFAULT NULL,
-  `dep_no` int(2) NOT NULL
+  `dep_no` int(2) NOT NULL,
+  `fotografia` varchar(60) COLLATE utf8_spanish_ci NOT NULL DEFAULT './img/silueta.png'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Dumping data for table `emp`
 --
 
-INSERT INTO `emp` (`emp_no`, `nombre`, `fecha_alta`, `oficio`, `salario`, `comision`, `dep_no`) VALUES
-(13, 'r', '2000-11-10 23:00:00', 'Administrativo', '44.00', NULL, 1);
+INSERT INTO `emp` (`emp_no`, `nombre`, `fecha_alta`, `oficio`, `salario`, `comision`, `dep_no`, `fotografia`) VALUES
+(1, 'test', '2000-01-10 23:00:00', 'Administrativo', '3434.00', '10.00', 1, './img/Ink-Wallpaper-24-1680x1050.png'),
+(6, 'gby', '2000-01-10 23:00:00', 'Administrativo', '3434.00', '10.00', 1, './img/silueta.png'),
+(13, 'r', '2000-11-10 23:00:00', 'Administrativo', '44.00', NULL, 1, './img/silueta.png'),
+(15, 'gb', '2000-01-10 23:00:00', 'Administrativo', '3434.00', '10.00', 1, './img/silueta.png');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `usuario`
+--
+
+CREATE TABLE `usuario` (
+  `id` int(11) NOT NULL,
+  `login` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
+  `password` varchar(100) COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Dumping data for table `usuario`
+--
+
+INSERT INTO `usuario` (`id`, `login`, `password`) VALUES
+(3, 'grys', '827ccb0eea8a706c4c34a16891f84e7b');
 
 --
 -- Indexes for dumped tables
@@ -87,6 +110,13 @@ ALTER TABLE `emp`
   ADD KEY `Dep_no` (`dep_no`) USING BTREE;
 
 --
+-- Indexes for table `usuario`
+--
+ALTER TABLE `usuario`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `login` (`login`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -97,10 +127,10 @@ ALTER TABLE `dep`
   MODIFY `dept_no` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT for table `emp`
+-- AUTO_INCREMENT for table `usuario`
 --
-ALTER TABLE `emp`
-  MODIFY `emp_no` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+ALTER TABLE `usuario`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
