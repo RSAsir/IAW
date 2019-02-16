@@ -10,7 +10,7 @@
 		mysqli_set_charset($conexion,'utf8'); //Para la conexion actual usa este juego de caracteres
 		return $conexion;} 
 
-	// validacion fecha (atta_empleado.php)
+	// validacion fecha (alta_empleado.php)
 		function validar_fecha($fecha) {
 			$fecha=explode('/',$fecha);
 

@@ -13,7 +13,8 @@
         //$conexion=conectar(); 
 
         $_SESSION['id_empleado']= $_GET['id']; // NECESARIO PASAR LA ID PORQUE ESTA SE PIERDE
-    
+        
+        if(isset($_SESSION['id'])) {   
     ?>
     <h3>Subir foto de perfil</h3>
 
@@ -23,6 +24,13 @@
     </form>
 
     <br>
-    <a href="index.php">Cancelar</a>
+    
+    <a href="index.php">Volver atras</a>
+
+    <?php
+        } else {
+            header("location:index.php");
+        }
+    ?>
 </body>
 </html>
