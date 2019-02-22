@@ -47,6 +47,7 @@
                     <th>Nombre departamento</th>
                     <th>Fotografia</th>
                     <th>Subir foto</th>
+                    <th>Descargar foto</th>
 
             <?php
                 while($fila=mysqli_fetch_assoc($empleados))
@@ -58,7 +59,8 @@
                 <td>".$fila['comision']."</td>
                 <td>".$fila['dnombre']."</td>
                 <td><img src=\"".$fila['fotografia']."\"width=\"100\" height=\"100\"></td>
-                <td><a href=\"subir_foto.php?id=".$fila['emp_no']."\">Subir foto</a></td></tr>";
+                <td><a href=\"subir_foto.php?id=".$fila['emp_no']."\">Subir foto</a></td>
+                <td><a href=\"descargar_foto.php?foto=".$fila['fotografia']."\">Descargar foto</a></td></tr>";
                 
         }
     ?>
