@@ -1,5 +1,4 @@
-
-    <?php
+<?php
 
         session_start(); // SE USA PARA QUE NO ROMPA LA SESION
 
