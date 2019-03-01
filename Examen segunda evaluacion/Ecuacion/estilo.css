@@ -1,0 +1,30 @@
+#pie{
+        
+	text-align:center;
+    font-size:150%;
+	margin-top:5%;
+}
+
+
+#formulario {
+width:80%;
+height:80%;
+margin:auto;
+
+}
+
+#marco{
+width:60%;
+height:50%;
+margin-left:20%; /*(100%-60%)/2*/
+margin-top:6%;
+border: 2px solid;
+}
+
+#soluciones
+{
+width:40%;
+height:50%;
+margin-left:30%; /*(100%-60%)/2*/
+margin-top:6%;
+}
