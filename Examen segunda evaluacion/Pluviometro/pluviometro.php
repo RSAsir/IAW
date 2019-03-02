@@ -21,7 +21,7 @@
                 $ano = 2018;
             }
 
-        $sql = "SELECT * FROM tabla";
+        $sql = "SELECT * FROM tabla ORDER BY id";
         $resultado=mysqli_query($conexion, $sql);
     ?>
 
