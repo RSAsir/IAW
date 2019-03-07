@@ -9,3 +9,5 @@ No llevar esto a cabo dara lugar a que el fichero se descarge con errores y no p
 <b> Subida de ficheros </b>
 
 Si hay errores a la hora de subir la imagen revisar siempre los permisos sobre los directorios, el 99% de las veces es eso, el 1% restante son errores de codigo.
+
+<b> Sesiones </b>
